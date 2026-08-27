@@ -1,0 +1,24 @@
+{
+  "id": "flowspeech",
+  "name": "FlowSpeech",
+  "description": "Context-aware text-to-speech through FlowSpeech",
+  "activation": {
+    "onStartup": false
+  },
+  "setup": {
+    "providers": [
+      {
+        "id": "flowspeech",
+        "envVars": ["FLOWSPEECH_API_KEY"]
+      }
+    ]
+  },
+  "contracts": {
+    "speechProviders": ["flowspeech"]
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {}
+  }
+}
