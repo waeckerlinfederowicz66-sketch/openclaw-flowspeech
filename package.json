@@ -1,7 +1,7 @@
 {
   "name": "openclaw-flowspeech",
-  "version": "0.1.0",
-  "description": "FlowSpeech text-to-speech provider plugin for OpenClaw.",
+  "version": "0.2.0",
+  "description": "FlowSpeech public API v1 asynchronous text-to-speech provider plugin for OpenClaw.",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -9,13 +9,24 @@
     "dist",
     "openclaw.plugin.json",
     "README.md",
+    "CHANGELOG.md",
     "LICENSE"
   ],
   "scripts": {
+    "check:runtime": "node scripts/check-runtime.mjs",
+    "test:runtime": "node --test tests/runtime-guard.mjs",
+    "pretest": "npm run check:runtime",
+    "prebuild": "npm run check:runtime",
+    "precheck": "npm run check:runtime",
+    "pretest:dist": "npm run check:runtime",
+    "preaudit:package": "npm run check:runtime",
     "build": "tsc -p tsconfig.json",
-    "check": "tsc -p tsconfig.json --noEmit",
+    "check": "tsc -p tsconfig.test.json --noEmit",
     "test": "vitest run",
-    "prepack": "npm run build && npm test"
+    "prepack": "npm run build && npm test && npm run test:dist",
+    "test:dist": "node --test tests/artifact-smoke.mjs",
+    "prepublishOnly": "npm run check:runtime && npm run test:runtime && npm test && npm run check && npm run build && npm run test:dist",
+    "audit:package": "node tests/package-audit.mjs"
   },
   "keywords": [
     "openclaw",

@@ -4,13 +4,15 @@ import {
 } from "openclaw/plugin-sdk/plugin-entry";
 import { buildFlowSpeechProvider } from "./provider.js";
 
+export * from './flowspeech-client.js';
+
 export { buildFlowSpeechProvider } from "./provider.js";
 export { synthesizeWithFlowSpeech } from "./tts.js";
 
 const plugin: OpenClawPluginDefinition = definePluginEntry({
   id: "flowspeech",
   name: "FlowSpeech",
-  description: "FlowSpeech context-aware text-to-speech provider",
+  description: "FlowSpeech public API v1 speech provider",
   register(api) {
     api.registerSpeechProvider(buildFlowSpeechProvider());
   },

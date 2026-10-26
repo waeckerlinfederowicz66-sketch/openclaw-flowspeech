@@ -1,7 +1,7 @@
 {
   "id": "flowspeech",
   "name": "FlowSpeech",
-  "description": "Context-aware text-to-speech through FlowSpeech",
+  "description": "Asynchronous text-to-speech through FlowSpeech public API v1",
   "activation": {
     "onStartup": false
   },
