@@ -1,6 +1,11 @@
 # FlowSpeech for OpenClaw
 
-## 0.2.1 Security Update
+## 0.2.2 Compatibility and Security Update
+
+The npm peer range explicitly includes the tested OpenClaw `2026.7.1-2`
+numeric-correction release. Version 0.2.1 omitted that prerelease from npm peer
+resolution; use 0.2.2 for normal installation with this host. The stable host
+minimum and the host's own compatibility checks are unchanged.
 
 HTTP and terminal-job errors use fixed local messages. Bounded diagnostic tokens exclude the configured API key and API-only header values; remote error messages are not returned. An interrupted body retains HTTP status and Retry-After; permanent HTTP failures never retry. Errors may expose retryAfterMs alongside validated recovery IDs.
 
@@ -22,10 +27,10 @@ npm test
 npm run build
 npm run test:dist
 npm pack
-openclaw plugins install npm-pack:./openclaw-flowspeech-0.2.1.tgz --force
+openclaw plugins install npm-pack:./openclaw-flowspeech-0.2.2.tgz
 ```
 
-The npm security update is version 0.2.1. The commands above build and install a local archive; they do not publish to or install from ClawHub.
+The npm compatibility update is version 0.2.2. The commands above build and install a local archive; they do not publish to or install from ClawHub. Do not use forced peer resolution to work around an incompatible host.
 
 ## Configure
 
@@ -151,7 +156,7 @@ Full API contract: [FlowSpeech public API](https://flowspeech.io/docs/public-api
 
 ## Development and release status
 
-Version 0.2.0 is the previous published API v1 release. Version 0.2.1 adds the safety fixes described above. Historical registry metadata and old installed versions are not changed by upgrading the source repository.
+Version 0.2.1 added the safety fixes described above. Version 0.2.2 preserves them and corrects npm peer resolution for the tested numeric-correction host. Previous published versions and their metadata are unchanged.
 
 Install locked dependencies, then run the package checks and pack locally. Tests use only fake transports and synthetic WAV data; they do not spend generation credits. See `RELEASE_CHECKLIST.md` for maintainer release steps.
 

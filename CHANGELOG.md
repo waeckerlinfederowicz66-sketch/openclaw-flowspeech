@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.2 - 2026-10-27
+
+- Explicitly allow the tested OpenClaw 2026.7.1-2 host in npm peer resolution while retaining the stable minimum and excluding untested prereleases.
+- Add positive/negative peer-range regressions and require ordinary clean installation without force or legacy peer resolution.
+- Preserve the 0.2.1 runtime safety fixes and all previously published versions.
+
 ## 0.2.1 - 2026-10-27
 
 - Use local error messages and reject reflected API credentials or private URLs in diagnostics.

@@ -1,8 +1,9 @@
-# Release checklist: openclaw-flowspeech 0.2.1
+# Release checklist: openclaw-flowspeech 0.2.2
 
-The previous 0.2.0 package remains unchanged. Release 0.2.1 packages the reviewed
-safety fixes; verify its exact artifacts and registry read-back before recording
-publication. Do not overwrite 0.2.0 or move its tag.
+The previous 0.2.0 and 0.2.1 packages remain unchanged. Release 0.2.2 retains the
+reviewed safety fixes and permits the explicitly tested numeric-correction host.
+Verify its exact artifacts, ordinary clean peer resolution and registry
+read-back before recording publication. Do not overwrite earlier versions.
 
 ## Required before any external write
 
@@ -15,7 +16,7 @@ publication. Do not overwrite 0.2.0 or move its tag.
 
 ## Local verification
 
-Use fresh 0.2.1 output directories. Never overwrite retained registry artifacts.
+Use fresh 0.2.2 output directories. Never overwrite retained registry artifacts.
 
 Use Node 22.23.2 (the verified local runtime) or the CI matrix's Node 24.19.0.
 Ensure the selected runtime's bin directory is first in PATH before invoking npm;
@@ -36,10 +37,10 @@ npm run test:dist
 npm pack --dry-run
 npm pack
 mkdir -p .cache/packed
-tar -xzf openclaw-flowspeech-0.2.1.tgz -C .cache/packed
+tar -xzf openclaw-flowspeech-0.2.2.tgz -C .cache/packed
 FLOWSPEECH_ARTIFACT_ROOT=.cache/packed/package npm run test:dist
 npm run audit:package
-shasum -a 256 openclaw-flowspeech-0.2.1.tgz
+shasum -a 256 openclaw-flowspeech-0.2.2.tgz
 ```
 
 The tarball allowlist is dist, README, CHANGELOG, LICENSE, package metadata, and openclaw.plugin.json.
