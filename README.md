@@ -1,6 +1,6 @@
 # FlowSpeech for OpenClaw
 
-## Unreleased Security Follow-up
+## 0.2.1 Security Update
 
 HTTP and terminal-job errors use fixed local messages. Bounded diagnostic tokens exclude the configured API key and API-only header values; remote error messages are not returned. An interrupted body retains HTTP status and Retry-After; permanent HTTP failures never retry. Errors may expose retryAfterMs alongside validated recovery IDs.
 
@@ -22,10 +22,10 @@ npm test
 npm run build
 npm run test:dist
 npm pack
-openclaw plugins install npm-pack:./openclaw-flowspeech-0.2.0.tgz --force
+openclaw plugins install npm-pack:./openclaw-flowspeech-0.2.1.tgz --force
 ```
 
-Do not assume npm or ClawHub availability. Installation from a registry should follow a separately verified release.
+The npm security update is version 0.2.1. The commands above build and install a local archive; they do not publish to or install from ClawHub.
 
 ## Configure
 
@@ -151,7 +151,7 @@ Full API contract: [FlowSpeech public API](https://flowspeech.io/docs/public-api
 
 ## Development and release status
 
-These are local 0.2.0 release candidates. The npm-name audit on 2026-10-26 returned 404; do not assume an earlier npm release exists or claim this version is published. The GitHub repository exists independently of npm availability. Publication is a separate maintainer/coordinator action.
+Version 0.2.0 is the previous published API v1 release. Version 0.2.1 adds the safety fixes described above. Historical registry metadata and old installed versions are not changed by upgrading the source repository.
 
 Install locked dependencies, then run the package checks and pack locally. Tests use only fake transports and synthetic WAV data; they do not spend generation credits. See `RELEASE_CHECKLIST.md` for maintainer release steps.
 

@@ -1,6 +1,6 @@
 {
   "name": "openclaw-flowspeech",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "FlowSpeech public API v1 asynchronous text-to-speech provider plugin for OpenClaw.",
   "type": "module",
   "main": "./dist/index.js",
