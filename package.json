@@ -6,7 +6,10 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist",
+    "dist/*.js",
+    "dist/*.d.ts",
+    "dist/*.js.map",
+    "dist/*.d.ts.map",
     "openclaw.plugin.json",
     "README.md",
     "CHANGELOG.md",

@@ -111,7 +111,10 @@ export function hostContractCases(buildProvider) {
       assert.ok(caught instanceof Error)
       const rendered = testApi.formatTtsProviderError('flowspeech', caught)
       assert.equal(caught.requestId, requestId)
-      assert.ok(rendered.includes('requestId=' + requestId), rendered)
+      assert.ok(caught.message.includes('requestId=' + requestId), 'Provider must retain the exact recovery ID')
+      // The host's conservative token patterns can also match UUID substrings.
+      assert.ok(rendered.includes('requestId='), rendered)
+      assert.ok(rendered.includes('requestId=' + requestId) || rendered.includes('***'), rendered)
       if (failure !== 'lost create response') {
         assert.equal(caught.jobId, jobId)
         assert.ok(rendered.includes('jobId=' + jobId), rendered)
@@ -121,6 +124,14 @@ export function hostContractCases(buildProvider) {
       assert.ok(!rendered.includes('private-fixture'))
       assert.equal(calls.filter(([, init]) => init.method === 'POST').length, 1)
     })
+  }])
+  cases.push(['host token redaction may mask a UUID without changing structured recovery data', async () => {
+    const requestId = '11111111-1111-4111-b4fc-123456789abc'
+    const error = Object.assign(new Error('Recovery: requestId=' + requestId), { requestId })
+    const rendered = testApi.formatTtsProviderError('flowspeech', error)
+    assert.ok(rendered.includes('***'), 'Fixture must exercise the installed host token pattern')
+    assert.equal(error.requestId, requestId)
+    assert.ok(error.message.includes(requestId))
   }])
   return cases
 }

@@ -1,5 +1,14 @@
 # FlowSpeech for OpenClaw
 
+## Unreleased Security Follow-up
+
+HTTP and terminal-job errors use fixed local messages. Bounded diagnostic tokens exclude the configured API key and API-only header values; remote error messages are not returned. An interrupted body retains HTTP status and Retry-After; permanent HTTP failures never retry. Errors may expose retryAfterMs alongside validated recovery IDs.
+
+The host applies additional token redaction to displayed errors. It can mask
+token-shaped substrings even in a valid UUID. The error's structured requestId
+and jobId and its original local message retain exact IDs; do not reconstruct a
+recovery ID from masked host log text. This plugin does not weaken host redaction.
+
 A FlowSpeech public API v1 speech-provider plugin implementing OpenClaw's `SpeechProviderPlugin` contract. It submits a job, polls until completion and downloads WAV bytes. Voice selection is preserved; the host receives buffered audio with `.wav` extension and `voiceCompatible: false`.
 
 ## Local installation
